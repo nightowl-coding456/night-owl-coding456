@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EasyShop — Find great products at great prices. Shop electronics, clothing, shoes, accessories and more.">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>EasyShop — Shop Smart</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       TOP BAR
+  ============================================================ -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <span>🚚 Free standard shipping on orders over $50</span>
+      <div class="top-bar-links">
+        <a href="#" id="trackOrderLink">Track Order</a>
+        <span class="top-bar-divider">|</span>
+        <a href="#" id="helpLink">Help</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="header" id="siteHeader">
+    <div class="container header-inner">
+
+      <!-- Logo -->
+      <a href="#" class="logo" id="logoLink">
+        <span class="logo-icon">🛍️</span>
+        <span class="logo-text">EasyShop</span>
+      </a>
+
+      <!-- Search -->
+      <div class="search-box" role="search">
+        <label for="searchInput" class="sr-only">Search products</label>
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search products, brands, categories…"
+          autocomplete="off"
+        >
+        <button type="button" id="searchButton" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <div id="searchSuggestions" class="search-suggestions" hidden></div>
+      </div>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+
+        <!-- Auth button -->
+        <button type="button" class="header-icon-btn" id="authButton" aria-label="Account">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span class="header-icon-label" id="authLabel">Sign In</span>
+        </button>
+
+        <!-- Wishlist -->
+        <button type="button" class="header-icon-btn" id="wishlistButton" aria-label="Wishlist">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="header-icon-label">Wishlist</span>
+          <span class="header-badge" id="wishlistCount" style="display:none">0</span>
+        </button>
+
+        <!-- Cart -->
+        <button type="button" class="cart-button" id="cartButton" aria-label="Shopping cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Cart
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+
+        <!-- Mobile menu toggle -->
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Category Nav -->
+    <nav class="category-nav" id="categoryNav" aria-label="Product categories">
+      <div class="container category-nav-inner">
+        <button class="cat-btn active" data-category="">All Products</button>
+        <button class="cat-btn" data-category="electronics">📱 Electronics</button>
+        <button class="cat-btn" data-category="clothing">👕 Clothing</button>
+        <button class="cat-btn" data-category="shoes">👟 Shoes</button>
+        <button class="cat-btn" data-category="accessories">⌚ Accessories</button>
+        <button class="cat-btn" data-category="home">🏠 Home</button>
+        <button class="cat-btn" data-category="sports">⚽ Sports</button>
+        <button class="cat-btn" data-category="beauty">💄 Beauty</button>
+        <button class="cat-btn" data-category="books">📚 Books</button>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- ============================================================
+       MAIN
+  ============================================================ -->
+  <main id="mainContent">
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section class="hero" id="heroSection">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <span class="hero-eyebrow">New Arrivals 2026</span>
+          <h1>Shop Smart,<br>Live Better</h1>
+          <p>Discover thousands of products across every category — all at prices that make sense.</p>
+          <div class="hero-actions">
+            <a href="#products" class="btn btn-white">Shop Now</a>
+            <a href="#" class="btn btn-outline-white" id="heroDealBtn">Today's Deals</a>
+          </div>
+        </div>
+        <div class="hero-badges">
+          <div class="hero-badge">
+            <span class="hero-badge-icon">🚚</span>
+            <span>Free Shipping</span>
+          </div>
+          <div class="hero-badge">
+            <span class="hero-badge-icon">🔄</span>
+            <span>Easy Returns</span>
+          </div>
+          <div class="hero-badge">
+            <span class="hero-badge-icon">🔒</span>
+            <span>Secure Checkout</span>
+          </div>
+          <div class="hero-badge">
+            <span class="hero-badge-icon">⭐</span>
+            <span>Top Rated</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section recently-viewed-section" style="display:none">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">Recently viewed</h2>
+          <button type="button" class="link-btn" onclick="localStorage.removeItem('es_recently_viewed'); location.reload()">Clear</button>
+        </div>
+        <div class="products-grid" id="recentlyViewedGrid"></div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         FEATURED / BANNER STRIP
+    ============================================================ -->
+    <section class="banner-strip">
+      <div class="container banner-grid">
+        <div class="banner-card banner-card--blue">
+          <div class="banner-card-text">
+            <span class="banner-tag">Electronics</span>
+            <h3>Latest Gadgets</h3>
+            <p>Up to 30% off</p>
+            <button class="banner-link" data-category="electronics">Shop Now →</button>
+          </div>
+          <div class="banner-card-emoji">📱</div>
+        </div>
+        <div class="banner-card banner-card--purple">
+          <div class="banner-card-text">
+            <span class="banner-tag">Fashion</span>
+            <h3>New Season Styles</h3>
+            <p>Fresh arrivals daily</p>
+            <button class="banner-link" data-category="clothing">Explore →</button>
+          </div>
+          <div class="banner-card-emoji">👗</div>
+        </div>
+        <div class="banner-card banner-card--green">
+          <div class="banner-card-text">
+            <span class="banner-tag">Home & Living</span>
+            <h3>Transform Your Space</h3>
+            <p>Premium home products</p>
+            <button class="banner-link" data-category="home">Discover →</button>
+          </div>
+          <div class="banner-card-emoji">🏡</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         FEATURED PRODUCTS
+    ============================================================ -->
+    <section class="section featured-section" id="featuredSection">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">⭐ Featured Products</h2>
+            <p class="section-subtitle">Hand-picked items our customers love</p>
+          </div>
+        </div>
+        <div class="products-grid" id="featuredGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         ALL PRODUCTS
+    ============================================================ -->
+    <section class="section products-section" id="products">
+      <div class="container">
+
+        <div class="products-toolbar">
+          <div class="toolbar-left">
+            <h2 class="section-title">All Products</h2>
+            <p class="product-status" id="productStatus">Loading products…</p>
+          </div>
+          <div class="toolbar-right">
+            <div class="filter-group">
+              <label for="categoryFilter" class="sr-only">Filter by category</label>
+              <select id="categoryFilter" class="select-input">
+                <option value="">All Categories</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="sortSelect" class="sr-only">Sort products</label>
+              <select id="sortSelect" class="select-input">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="price-low">Price: Low → High</option>
+                <option value="price-high">Price: High → Low</option>
+                <option value="name">Name A–Z</option>
+                <option value="rating">Top Rated</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Load more -->
+        <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+          <button type="button" class="btn btn-outline" id="loadMoreBtn">Load More Products</button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         WHY CHOOSE US
+    ============================================================ -->
+    <section class="section why-section">
+      <div class="container">
+        <h2 class="section-title text-center">Why Shop with EasyShop?</h2>
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon">🚚</div>
+            <h3>Fast Delivery</h3>
+            <p>Standard delivery in 3–5 days. Express delivery in 1–2 days. Free pickup available.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">🔒</div>
+            <h3>Secure Payments</h3>
+            <p>Your payment information is always safe. We use industry-standard encryption.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">🔄</div>
+            <h3>Easy Returns</h3>
+            <p>Not happy? Return within 30 days for a full refund, no questions asked.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">💬</div>
+            <h3>24/7 Support</h3>
+            <p>Our customer support team is always available to help you with any issues.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         NEWSLETTER
+    ============================================================ -->
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-card">
+          <div class="newsletter-text">
+            <h2>Get exclusive deals in your inbox</h2>
+            <p>Subscribe and be the first to know about sales, new arrivals and discount codes.</p>
+          </div>
+          <form class="newsletter-form" id="newsletterForm" novalidate>
+            <input type="email" placeholder="Enter your email address" id="newsletterEmail" autocomplete="email">
+            <button type="submit" class="btn btn-white">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo footer-logo">
+          <span class="logo-icon">🛍️</span>
+          <span class="logo-text">EasyShop</span>
+        </a>
+        <p>Your one-stop shop for everything you need. Quality products, great prices, fast delivery.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook" class="social-link">📘</a>
+          <a href="#" aria-label="Instagram" class="social-link">📸</a>
+          <a href="#" aria-label="Twitter" class="social-link">🐦</a>
+          <a href="#" aria-label="YouTube" class="social-link">▶️</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#products">All Products</a></li>
+          <li><button class="footer-cat-link" data-category="electronics">Electronics</button></li>
+          <li><button class="footer-cat-link" data-category="clothing">Clothing</button></li>
+          <li><button class="footer-cat-link" data-category="shoes">Shoes</button></li>
+          <li><button class="footer-cat-link" data-category="accessories">Accessories</button></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Account</h4>
+        <ul>
+          <li><a href="#" id="footerSignIn">Sign In</a></li>
+          <li><a href="#" id="footerRegister">Create Account</a></li>
+          <li><a href="#" id="footerOrders">My Orders</a></li>
+          <li><a href="#" id="footerWishlist">Wishlist</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Track Your Order</a></li>
+          <li><a href="#">Returns & Refunds</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2026 EasyShop. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+        <div class="payment-icons">
+          <span title="Visa">VISA</span>
+          <span title="Mastercard">MC</span>
+          <span title="PayPal">PP</span>
+          <span title="Apple Pay">AP</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       CART OVERLAY
+  ============================================================ -->
+  <div id="cartOverlay" class="overlay" role="presentation"></div>
+
+
+  <!-- ============================================================
+       CART SIDEBAR
+  ============================================================ -->
+  <aside id="cartSidebar" class="cart-sidebar" aria-label="Shopping cart" role="complementary">
+    <div class="sidebar-header">
+      <h2>🛒 Your Cart</h2>
+      <button type="button" id="closeCart" class="icon-close-btn" aria-label="Close cart">✕</button>
+    </div>
+
+    <div class="cart-items" id="cartItems">
+      <div class="empty-state">
+        <div class="empty-state-icon">🛒</div>
+        <h3>Your cart is empty</h3>
+        <p>Add some products to get started.</p>
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-totals">
+        <div class="cart-total-row">
+          <span>Subtotal</span>
+          <strong id="cartSubtotal">$0.00</strong>
+        </div>
+        <div class="cart-total-row">
+          <span>Delivery</span>
+          <strong id="cartDelivery">$0.00</strong>
+        </div>
+        <div class="cart-total-row cart-grand-total">
+          <span>Total</span>
+          <strong id="cartTotal">$0.00</strong>
+        </div>
+      </div>
+      <button type="button" id="checkoutButton" class="btn btn-primary btn-full" disabled>
+        Proceed to Checkout
+      </button>
+    </div>
+  </aside>
+
+
+  <!-- ============================================================
+       CHECKOUT MODAL
+  ============================================================ -->
+  <div class="modal-overlay" id="checkoutOverlay" role="presentation">
+    <div class="modal modal--checkout" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+
+      <div class="modal-header">
+        <h2 id="checkoutTitle">Checkout</h2>
+        <button type="button" id="closeCheckout" class="icon-close-btn" aria-label="Close checkout">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="checkoutForm" novalidate>
+
+          <div class="checkout-layout">
+
+            <!-- Left: Customer info -->
+            <div class="checkout-fields">
+              <h3 class="checkout-section-title">Contact Information</h3>
+
+              <div class="field-row">
+                <div class="field-group">
+                  <label for="customerName">Full Name *</label>
+                  <input type="text" id="customerName" placeholder="John Smith" autocomplete="name" required>
+                </div>
+                <div class="field-group">
+                  <label for="customerEmail">Email Address</label>
+                  <input type="email" id="customerEmail" placeholder="john@example.com" autocomplete="email">
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field-group">
+                  <label for="customerPhone">Phone Number</label>
+                  <input type="tel" id="customerPhone" placeholder="+1 (555) 000-0000" autocomplete="tel">
+                </div>
+              </div>
+
+              <h3 class="checkout-section-title">Delivery Details</h3>
+
+              <div class="field-group">
+                <label for="customerAddress">Delivery Address</label>
+                <textarea id="customerAddress" placeholder="Street address, city, state, ZIP" autocomplete="street-address" rows="3"></textarea>
+              </div>
+
+              <div class="field-group">
+                <label for="deliveryMethod">Delivery Method</label>
+                <select id="deliveryMethod">
+                  <option value="standard">🚚 Standard Delivery (3–5 days) — $5.00</option>
+                  <option value="express">⚡ Express Delivery (1–2 days) — $12.00</option>
+                  <option value="pickup">🏪 Store Pickup — Free</option>
+                </select>
+              </div>
+
+              <h3 class="checkout-section-title">Promo Code</h3>
+
+              <div class="coupon-row">
+                <input type="text" id="couponInput" placeholder="Enter coupon code" autocomplete="off" style="text-transform:uppercase">
+                <button type="button" id="applyCouponBtn" class="btn btn-outline">Apply</button>
+              </div>
+              <div id="couponMessage" class="coupon-message" style="display:none"></div>
+
+              <div class="field-group" style="margin-top:16px">
+                <label for="orderNotes">Order Notes (optional)</label>
+                <textarea id="orderNotes" placeholder="Special instructions…" rows="2"></textarea>
+              </div>
+            </div>
+
+            <!-- Right: Order summary -->
+            <div class="checkout-summary">
+              <h3 class="checkout-section-title">Order Summary</h3>
+
+              <div id="checkoutItemsList" class="checkout-items-list">
+                <!-- Populated by JS -->
+              </div>
+
+              <div class="summary-totals">
+                <div class="summary-row">
+                  <span>Subtotal</span>
+                  <strong id="checkoutSubtotal">$0.00</strong>
+                </div>
+                <div class="summary-row" id="discountRow" style="display:none;color:#16a34a">
+                  <span>Discount</span>
+                  <strong id="checkoutDiscount">−$0.00</strong>
+                </div>
+                <div class="summary-row">
+                  <span>Delivery</span>
+                  <strong id="checkoutDelivery">$5.00</strong>
+                </div>
+                <div class="summary-row summary-total-row">
+                  <span>Total</span>
+                  <strong id="checkoutTotal">$5.00</strong>
+                </div>
+              </div>
+
+              <div id="checkoutMessage" class="form-message" role="alert" aria-live="polite" style="display:none"></div>
+
+              <!-- Payment method -->
+              <div class="payment-method-row">
+                <label class="payment-option payment-option--card" id="payWithCardLabel">
+                  <input type="checkbox" id="payWithCardCheckbox">
+                  <span class="payment-option-icon">💳</span>
+                  <span class="payment-option-text">
+                    <strong>Pay with Card</strong>
+                    <small>Visa, Mastercard, Apple Pay via Stripe</small>
+                  </span>
+                  <span class="payment-option-badge">Secure</span>
+                </label>
+                <label class="payment-option payment-option--cash">
+                  <span class="payment-option-icon">💵</span>
+                  <span class="payment-option-text">
+                    <strong>Pay on Delivery</strong>
+                    <small>Cash or card at the door</small>
+                  </span>
+                </label>
+              </div>
+
+              <button type="submit" id="placeOrderButton" class="btn btn-success btn-full">
+                Place Order
+              </button>
+
+              <p class="checkout-trust">
+                🔒 Secure checkout &nbsp;·&nbsp; 🔄 Free returns &nbsp;·&nbsp; ⭐ 5-star support
+              </p>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       AUTH MODAL
+  ============================================================ -->
+  <div class="modal-overlay" id="authOverlay" role="presentation">
+    <div class="modal modal--auth" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+
+      <div class="modal-header">
+        <h2 id="authModalTitle">Sign In</h2>
+        <button type="button" id="closeAuth" class="icon-close-btn" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- Auth Tabs -->
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab active" id="loginTab" role="tab" aria-selected="true" data-tab="login">Sign In</button>
+          <button class="auth-tab" id="registerTab" role="tab" aria-selected="false" data-tab="register">Create Account</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form" novalidate>
+          <div class="field-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+          <div class="field-group">
+            <label for="loginPassword">Password</label>
+            <div class="password-wrap">
+              <input type="password" id="loginPassword" placeholder="Your password" autocomplete="current-password" required>
+              <button type="button" class="toggle-password" data-target="loginPassword" aria-label="Show password">👁</button>
+            </div>
+          </div>
+          <div id="loginMessage" class="form-message" role="alert" aria-live="polite" style="display:none"></div>
+          <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+          <p class="auth-switch">
+            Don't have an account?
+            <button type="button" class="link-btn" data-tab="register">Create one</button>
+          </p>
+          <p class="auth-switch"><button type="button" class="link-btn" id="forgotPasswordButton">Forgot password?</button></p>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" class="auth-form" style="display:none" novalidate>
+          <div class="field-row">
+            <div class="field-group">
+              <label for="registerName">Full Name</label>
+              <input type="text" id="registerName" placeholder="John Smith" autocomplete="name" required>
+            </div>
+            <div class="field-group">
+              <label for="registerPhone">Phone (optional)</label>
+              <input type="tel" id="registerPhone" placeholder="+1 (555) 000-0000" autocomplete="tel">
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="registerEmail">Email Address</label>
+            <input type="email" id="registerEmail" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+          <div class="field-group">
+            <label for="registerPassword">Password</label>
+            <div class="password-wrap">
+              <input type="password" id="registerPassword" placeholder="At least 8 characters" autocomplete="new-password" required>
+              <button type="button" class="toggle-password" data-target="registerPassword" aria-label="Show password">👁</button>
+            </div>
+          </div>
+          <div id="registerMessage" class="form-message" role="alert" aria-live="polite" style="display:none"></div>
+          <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+          <p class="auth-switch">
+            Already have an account?
+            <button type="button" class="link-btn" data-tab="login">Sign in</button>
+          </p>
+        </form>
+
+        <form id="forgotPasswordForm" class="auth-form" style="display:none" novalidate>
+          <p>Enter your email and we'll send a password reset link if an account exists.</p>
+          <div class="field-group"><label for="forgotEmail">Email Address</label><input type="email" id="forgotEmail" required></div>
+          <div id="forgotMessage" class="form-message" role="alert" style="display:none"></div>
+          <button type="submit" class="btn btn-primary btn-full">Send reset link</button>
+          <p class="auth-switch"><button type="button" class="link-btn" data-tab="login">Back to sign in</button></p>
+        </form>
+
+        <form id="resetPasswordForm" class="auth-form" style="display:none" novalidate>
+          <div class="field-group"><label for="resetPassword">New Password</label><input type="password" id="resetPassword" minlength="8" required></div>
+          <div id="resetMessage" class="form-message" role="alert" style="display:none"></div>
+          <button type="submit" class="btn btn-primary btn-full">Reset password</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       ACCOUNT MODAL (profile + orders + wishlist)
+  ============================================================ -->
+  <div class="modal-overlay" id="accountOverlay" role="presentation">
+    <div class="modal modal--account" role="dialog" aria-modal="true" aria-labelledby="accountModalTitle">
+
+      <div class="modal-header">
+        <h2 id="accountModalTitle">My Account</h2>
+        <button type="button" id="closeAccount" class="icon-close-btn" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal-body account-modal-body">
+
+        <!-- Sidebar nav -->
+        <nav class="account-nav" role="tablist">
+          <button class="account-nav-item active" data-panel="profile" role="tab">👤 Profile</button>
+          <button class="account-nav-item" data-panel="orders" role="tab">📦 My Orders</button>
+          <button class="account-nav-item" data-panel="wishlist-panel" role="tab">❤️ Wishlist</button>
+          <button class="account-nav-item" data-panel="password" role="tab">🔑 Password</button>
+          <button class="account-nav-item account-signout" id="signOutBtn">🚪 Sign Out</button>
+        </nav>
+
+        <!-- Profile Panel -->
+        <div class="account-panel active" id="panel-profile">
+          <h3>Profile Information</h3>
+          <form id="profileForm" novalidate>
+            <div class="field-row">
+              <div class="field-group">
+                <label for="profileName">Full Name</label>
+                <input type="text" id="profileName" autocomplete="name" required>
+              </div>
+              <div class="field-group">
+                <label for="profilePhone">Phone</label>
+                <input type="tel" id="profilePhone" autocomplete="tel">
+              </div>
+            </div>
+            <div class="field-group">
+              <label for="profileAddress">Default Address</label>
+              <textarea id="profileAddress" rows="3" autocomplete="street-address"></textarea>
+            </div>
+            <div id="profileMessage" class="form-message" style="display:none"></div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
+        </div>
+
+        <!-- Orders Panel -->
+        <div class="account-panel" id="panel-orders">
+          <h3>My Orders</h3>
+          <div id="myOrdersList">
+            <p class="text-muted">Loading your orders…</p>
+          </div>
+        </div>
+
+        <!-- Wishlist Panel -->
+        <div class="account-panel" id="panel-wishlist-panel">
+          <h3>My Wishlist</h3>
+          <div class="products-grid products-grid--small" id="wishlistGrid">
+            <p class="text-muted">Loading wishlist…</p>
+          </div>
+        </div>
+
+        <!-- Password Panel -->
+        <div class="account-panel" id="panel-password">
+          <h3>Change Password</h3>
+          <form id="passwordForm" novalidate>
+            <div class="field-group">
+              <label for="currentPassword">Current Password</label>
+              <div class="password-wrap">
+                <input type="password" id="currentPassword" autocomplete="current-password" required>
+                <button type="button" class="toggle-password" data-target="currentPassword" aria-label="Show password">👁</button>
+              </div>
+            </div>
+            <div class="field-group">
+              <label for="newPassword">New Password</label>
+              <div class="password-wrap">
+                <input type="password" id="newPassword" placeholder="At least 8 characters" autocomplete="new-password" required>
+                <button type="button" class="toggle-password" data-target="newPassword" aria-label="Show password">👁</button>
+              </div>
+            </div>
+            <div id="passwordMessage" class="form-message" style="display:none"></div>
+            <button type="submit" class="btn btn-primary">Change Password</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       PRODUCT DETAIL MODAL
+  ============================================================ -->
+  <div class="modal-overlay" id="productOverlay" role="presentation">
+    <div class="modal modal--product" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+
+      <div class="modal-header">
+        <h2 id="productModalTitle" class="sr-only">Product Details</h2>
+        <button type="button" id="closeProduct" class="icon-close-btn" aria-label="Close product">✕</button>
+      </div>
+
+      <div class="modal-body" id="productModalBody">
+        <!-- Populated by JS -->
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       ORDER CONFIRMATION
+  ============================================================ -->
+  <section id="orderConfirmation" class="order-confirmation" style="display:none" aria-live="polite">
+    <div class="container">
+      <div class="confirmation-card">
+
+        <div class="confirmation-icon">✓</div>
+        <h2>Order Confirmed!</h2>
+        <p class="text-muted">Thank you for your purchase. We've received your order.</p>
+
+        <div class="confirmation-order-number">
+          Order <strong id="confirmationOrderId"></strong>
+        </div>
+
+        <div class="confirmation-details-grid">
+          <div class="conf-detail">
+            <span>Customer</span>
+            <strong id="confirmationCustomer"></strong>
+          </div>
+          <div class="conf-detail">
+            <span>Email</span>
+            <strong id="confirmationEmail"></strong>
+          </div>
+          <div class="conf-detail">
+            <span>Delivery Address</span>
+            <strong id="confirmationAddress"></strong>
+          </div>
+          <div class="conf-detail">
+            <span>Delivery Method</span>
+            <strong id="confirmationDeliveryMethod"></strong>
+          </div>
+          <div class="conf-detail">
+            <span>Status</span>
+            <strong id="confirmationStatus"></strong>
+          </div>
+          <div class="conf-detail">
+            <span>Payment</span>
+            <strong id="confirmationPayment"></strong>
+          </div>
+        </div>
+
+        <div class="confirmation-items-section">
+          <h3>Items Ordered</h3>
+          <div id="confirmationItems"></div>
+        </div>
+
+        <div class="confirmation-totals">
+          <div class="conf-total-row">
+            <span>Subtotal</span>
+            <strong id="confirmationSubtotal"></strong>
+          </div>
+          <div class="conf-total-row" id="confDiscountRow" style="display:none;color:#16a34a">
+            <span>Discount</span>
+            <strong id="confirmationDiscount"></strong>
+          </div>
+          <div class="conf-total-row">
+            <span>Delivery</span>
+            <strong id="confirmationDelivery"></strong>
+          </div>
+          <div class="conf-total-row conf-grand-total">
+            <span>Total</span>
+            <strong id="confirmationTotal"></strong>
+          </div>
+        </div>
+
+        <button type="button" id="continueShoppingButton" class="btn btn-primary" style="margin-top:24px;width:100%">
+          Continue Shopping
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       TOAST
+  ============================================================ -->
+  <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ============================================================
+       BACK TO TOP
+  ============================================================ -->
+  <button type="button" id="backToTop" class="back-to-top" aria-label="Back to top" style="display:none">↑</button>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script src="./js/app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator && location.protocol === "http:") {
+      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(error => {
+        console.warn("EasyShop offline support unavailable:", error.message);
+      }));
+    }
+  </script>
+
+</body>
+</html>
